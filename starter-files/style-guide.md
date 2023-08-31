@@ -13,7 +13,7 @@ The designs were created to the following widths:
 
 - Grayish blue: hsl(237, 18%, 59%)
 - Soft red: hsl(345, 95%, 68%)
-
+  
 ### Neutral
 
 - White: hsl(0, 0%, 100%)

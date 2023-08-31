@@ -1,0 +1,18 @@
+@mixin transition($duration: 1s, $delay: 0ms) {
+    transition: all cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition-duration: $duration;
+    transition-delay: $delay;
+    will-change: transform;
+}
+
+@mixin transition-ease-in($duration: 700ms, $delay: 0ms) {
+    transition: all cubic-bezier(0.89, 0.22, 0.26, 1.11);
+    transition-duration: $duration;
+    transition-delay: $delay;
+    will-change: transform;
+}
+
+@mixin transition-switch {
+    transition: all 0.2s ease-in-out;
+    will-change: transform;
+}
