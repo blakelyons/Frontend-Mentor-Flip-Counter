@@ -30,7 +30,7 @@ Users should be able to:
 
 ### Screenshot
 
-![](https://frontend-mentor-countdown-timer.pages.dev/assets/blake-lyons-frontend-mentor-countdown-timer-screenshot.jpg)
+![](https://blakelyons.com/graphics/coding_challenges/countdown_timer/blake-lyons-frontend-mentor-countdown-timer-screenshot.jpg)
 
 ### Links
 
