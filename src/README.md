@@ -35,7 +35,7 @@ Users should be able to:
 ### Links
 
 -   Solution URL: [Add solution URL here](https://your-solution-url.com)
--   Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+-   Live Site URL: [https://d5617416.frontend-mentor-countdown-timer.pages.dev/](https://d5617416.frontend-mentor-countdown-timer.pages.dev/)
 
 ## My process
 

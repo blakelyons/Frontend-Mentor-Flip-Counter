@@ -1,35 +1,78 @@
-# flip-timer
+# Frontend Mentor - Launch countdown timer solution
 
-This template should help get you started developing with Vue 3 in Vite.
+This is a solution to the [Launch countdown timer challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/launch-countdown-timer-N0XkGfyz-). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
 
-## Recommended IDE Setup
+## Table of contents
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+-   [Overview](#overview)
+    -   [The challenge](#the-challenge)
+    -   [Screenshot](#screenshot)
+    -   [Links](#links)
+-   [My process](#my-process)
+    -   [Built with](#built-with)
+    -   [What I learned](#what-i-learned)
+    -   [Continued development](#continued-development)
+    -   [Useful resources](#useful-resources)
+-   [Author](#author)
+-   [Acknowledgments](#acknowledgments)
 
-## Customize configuration
+**Note: Delete this note and update the table of contents based on what sections you keep.**
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+## Overview
 
-## Project Setup
+### The challenge
 
-```sh
-npm install
-```
+Users should be able to:
 
-### Compile and Hot-Reload for Development
+-   See hover states for all interactive elements on the page
+-   See a live countdown timer that ticks down every second (start the count at 14 days)
+-   **Bonus**: When a number changes, make the card flip from the middle
 
-```sh
-npm run dev
-```
+### Screenshot
 
-### Compile and Minify for Production
+![](./screenshot.jpg)
 
-```sh
-npm run build
-```
+### Links
 
-### Lint with [ESLint](https://eslint.org/)
+-   Solution URL: [Add solution URL here](https://your-solution-url.com)
+-   Live Site URL: [https://d5617416.frontend-mentor-countdown-timer.pages.dev/](https://d5617416.frontend-mentor-countdown-timer.pages.dev/)
 
-```sh
-npm run lint
-```
+## My process
+
+### Built with
+
+-   Semantic HTML5 markup
+-   CSS custom properties
+-   Flexbox
+-   CSS Grid
+-   Mobile-first workflow
+-   [Vue](https://vuejs.org/guide/introduction.html) - JS library
+-   [icomoon.io](https://icomoon.io/) - Custom Icon Fonts
+-   [https://pqina.nl/tick/#flip](https://pqina.nl/tick/#flip) - Tick Flip Library
+
+### What I learned
+
+I used this project to practice Vue and CSS transitions. One of the main things I learned was how to do transitions with Vue.
+
+### Continued development
+
+I want to continue to learn how to create Vue applications that utilize transitions and animations to create beautiful looking apps.
+
+### Useful resources
+
+-   [Tick Flip](https://pqina.nl/tick/#flip) - This helped me because I was able to quickly deploy a high-fidelity looking countdown timer with minimal work. This library was easily deployable and easily customizable.
+-   [Kevin Powell](https://www.youtube.com/@KevinPowell) - While I have been doing web devlopment for several years, watching Kevin Powell's YouTube channel has helped keep my CSS knowledge up to date.
+
+## Author
+
+-   Website - [blakelyons.com](https://blakelyons.com)
+-   Frontend Mentor - [@blakelyons](https://www.frontendmentor.io/profile/blakelyons)
+-   Twitter - [@blakelyons](https://www.twitter.com/blakelyons)
+
+## Acknowledgments
+
+Moon Image from [https://unsplash.com/collections/TM6m_XtZZqg/moon-overlays](Unsplash)
+
+Background Image from (Image by [https://pixabay.com/users/felixmittermeier-4397258/](FelixMittermeier) from [https://pixabay.com](Pixabay))
+
+Tick Flip by @pqina [https://pqina.nl/tick/#flip](pzina.nl/tick/#flip)
