@@ -39,8 +39,6 @@ const props = defineProps({
     easeout: Boolean,
 });
 
-const initBackgroundAnimation = ref(false);
-
 const easeInForeground = ref(false);
 const easeInBackground = ref(false);
 const easeInShadow = ref(false);

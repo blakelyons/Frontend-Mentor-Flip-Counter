@@ -1,78 +1,59 @@
 <template>
-    <Transition name="fade">
-        <div class="dark-mode-stars-bg" v-if="showStars">
-            <BackgroundStars />
-        </div>
-    </Transition>
-
-    <div class="dark-mode-bg"></div>
-    <div class="light-mode-bg"></div>
-    <header class="header">
-        <div class="container">
-            <h1 :class="`${loaded ? `loaded` : ``} ${easein ? `easein` : ``} ${easeout ? `easeout` : ``}`">We're Launching Soon</h1>
-        </div>
-    </header>
-    <main class="countdown-timer-container">
-        <div :class="`flip-timer grid grid-cols-4 ${easein ? `easein` : ``} ${easeout ? `easeout` : ``}`">
-            <div class="grid grid-item days">
-                <Flip :value="days" :days="true" />
-                <h2 class="label">Days</h2>
-            </div>
-            <div class="grid grid-item hours">
-                <Flip :value="hours" :hours="true" />
-                <h2 class="label">Hours</h2>
-            </div>
-            <div class="grid grid-item minutes">
-                <Flip :value="minutes" :minutes="true" />
-                <h2 class="label">Minutes</h2>
-            </div>
-            <div class="grid grid-item seconds">
-                <Flip :value="seconds" :seconds="true" />
-                <h2 class="label">Seconds</h2>
-            </div>
-        </div>
-    </main>
+    <AppBackground :show-sun="showSun" :show-moon="showMoon" />
+    <HeaderLayout :header-title="headerTitleText" :loaded="loaded" :easein="easein" :easeout="easeout" :focus="focus" />
+    <CountdownTimerLayout :easein="easein" :easeout="easeout" :days="days" :hours="hours" :minutes="minutes" :seconds="seconds" />
     <FooterLayout :lightMode="lightMode" :easein="easein" :easeout="easeout" />
-    <button @click="toggleMode" :class="`light-mode-toggle ${toggleLightMode ? `light` : `dark`}`">
-        <div class="switch-icon">
-            <MoonIcon />
-            <SunIcon />
-        </div>
-    </button>
-    <div :class="`sunrise ${showSun ? `rise` : ``}`">
-        <SunIcon />
-        <div class="sun-glow"></div>
-    </div>
+    <CountdownTimerSettings @toggle-light-mode="toggleMode" @save-settings="startCountdown" @header-title-text="updateTitle" />
+    <SunAndMoonRise :show-sun="showSun" :show-moon="showMoon" />
 </template>
 
 <script setup>
-import {ref, onMounted, watch} from "vue";
-import Flip from "./components/FlipNumber.vue";
-import FooterLayout from "./components/FooterLayout.vue";
-import BackgroundStars from "./components/BackgroundStars.vue";
-import SunIcon from "./components/icons/SunIcon.vue";
-import MoonIcon from "./components/icons/FullMoonIcon.vue";
+import {ref, onMounted} from "vue";
+import CountdownTimerLayout from "./components/CountdownTimerLayout.vue";
+import HeaderLayout from "./Layout/HeaderLayout.vue";
+import FooterLayout from "./Layout/FooterLayout.vue";
+import AppBackground from "./Layout/AppBackground.vue";
+import SunAndMoonRise from "./components/SunAndMoonRise.vue";
+import CountdownTimerSettings from "./components/CountdownTimerSettings.vue";
 
 const loaded = ref(false);
 const easein = ref(false);
 const easeout = ref(false);
+const focus = ref(false);
 const toggleLightMode = ref(false);
 const lightMode = ref(false);
 const showStars = ref(true);
 const showSun = ref(false);
+const showMoon = ref(false);
+const headerTitleText = ref("We're Launching Soon");
 
-const endDate = new Date("2023-09-30");
-const endTime = new Date("2023-09-30T16:30:00");
+const endDate = ref(new Date("2023-09-30"));
 
 const days = ref("");
 const hours = ref("");
 const minutes = ref("");
 const seconds = ref("");
 
-const countdownTimer = () => {
+const updateTitle = (title) => {
+    headerTitleText.value = title;
+};
+
+const startCountdown = async () => {
+    if (localStorage.getItem("targetDate")) {
+        endDate.value = new Date(localStorage.getItem("targetDate"));
+    }
+
+    await countdownTimer();
+    setInterval(countdownTimer, 1000);
+};
+
+const countdownTimer = async () => {
     const now = new Date();
+
     const startTimeInMilliseconds = now.getTime();
-    const endTimeInMilliseconds = endDate.getTime() + endTime.getHours() * 3600000 + endTime.getMinutes() * 60000 + endTime.getSeconds() * 1000;
+    const endTimeInMilliseconds =
+        endDate.value.getTime() + endDate.value.getHours() * 3600000 + endDate.value.getMinutes() * 60000 + endDate.value.getSeconds() * 1000;
+
     const timeDifference = endTimeInMilliseconds - startTimeInMilliseconds;
 
     if (timeDifference <= 0) {
@@ -97,7 +78,7 @@ const countdownTimer = () => {
 
 const toggleMode = () => {
     console.log("Toggle Mode");
-    toggleLightMode.value ? (toggleLightMode.value = false) : (toggleLightMode.value = true);
+    toggleLightMode.value ? (toggleLightMode.value = false) : ((toggleLightMode.value = true), (showMoon.value = false));
     easein.value ? (easein.value = false) : (easein.value = true);
     easeout.value = true;
     showStars.value = false;
@@ -107,6 +88,10 @@ const toggleMode = () => {
     setTimeout(() => {
         easein.value = true;
         easeout.value = false;
+
+        setTimeout(() => {
+            focus.value = true;
+        }, 500);
     }, 1000);
 
     const animated = document.querySelector(".flip-timer.easein");
@@ -136,19 +121,27 @@ const toggleMode = () => {
     }, 1100);
 
     showSun.value
-        ? (showSun.value = false)
+        ? ((showSun.value = false),
+          setTimeout(() => {
+              showMoon.value = true;
+          }, 600))
         : setTimeout(() => {
-              showSun.value = true;
+              (showSun.value = true), (showMoon.value = false);
           }, 600);
 };
 
 onMounted(() => {
-    countdownTimer();
-    setInterval(countdownTimer, 1000);
-
+    startCountdown();
     setTimeout(() => {
         loaded.value = true;
         easein.value = true;
+
+        // Show Moon by Default
+        showMoon.value = true;
     }, 500);
+
+    setTimeout(() => {
+        focus.value = true;
+    }, 800);
 });
 </script>

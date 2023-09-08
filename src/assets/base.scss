@@ -49,6 +49,23 @@ body {
         opacity: 1;
         content: "";
         transition: all ease-in 1s;
+        overflow: hidden;
+    }
+
+    .dark-mode-bg:after {
+        display: block;
+        position: absolute;
+        z-index: 0;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url("./milky-way-5295155_1920.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: 0% -50%;
+        content: "";
+        opacity: 0.08;
     }
 
     .light-mode-bg {
@@ -148,6 +165,10 @@ h2 {
     }
 }
 
+.margin-top-small {
+    margin-top: 1rem;
+}
+
 header,
 .countdown-timer-container,
 footer,
@@ -164,10 +185,15 @@ header {
         margin: 2rem -0.5em auto 0;
         @include transition(1s, 1100ms);
         opacity: 0;
+        filter: blur(10px);
 
         &.loaded,
         &.easein {
             opacity: 1;
+        }
+
+        &.focus {
+            filter: blur(0);
         }
 
         &.easeout {
@@ -283,6 +309,7 @@ footer {
     width: 100%;
     overflow-x: hidden;
     overflow-y: hidden;
+    margin-bottom: -1rem;
 
     > * {
         position: relative;
@@ -302,7 +329,7 @@ footer {
         content: "";
         z-index: 0;
         overflow-x: hidden;
-        margin-bottom: -10px;
+        margin-bottom: -1rem;
 
         &-left,
         &-right {
@@ -339,14 +366,49 @@ footer {
 
     .menu-social,
     .attribution {
-        @include transition-ease-in;
         transform: translateY(200%);
+    }
+
+    .footer,
+    .attribution {
+        @include transition-ease-in;
+
+        a {
+            @include transition;
+            &:hover {
+                color: var(--clr-white);
+            }
+        }
     }
 
     .menu-social {
         transition-delay: 350ms;
         &.animate-in {
             transform: translateY(0);
+        }
+
+        a {
+            font-size: 1.72rem;
+            text-decoration: none;
+            color: var(--clr-gray-blue-hover);
+
+            span:before {
+                @include transition-ease-in;
+            }
+
+            &.dark:hover span:before {
+                color: var(--clr-gray-blue-hover);
+            }
+
+            &.light {
+                span:before {
+                    color: var(--clr-darker-blue);
+                }
+            }
+
+            &.light:hover span:before {
+                color: var(--clr-darker-blue-hover);
+            }
         }
     }
 
