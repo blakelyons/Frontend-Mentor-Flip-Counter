@@ -30,7 +30,7 @@ Users should be able to:
 
 ### Screenshot
 
-![](./screenshot.jpg)
+![](https://frontend-mentor-countdown-timer.pages.dev/assets/blake-lyons-frontend-mentor-countdown-timer-screenshot.jpg)
 
 ### Links
 
