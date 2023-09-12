@@ -8,7 +8,7 @@
     >
         <defs><path id="a" d="M0 0h1440v197H0z" /></defs>
         <g fill="none" fill-rule="evenodd">
-            <mask id="b" fill="#fff"><use xlink:href="#a" /></mask>
+            <mask fill="#fff"><use xlink:href="#a" /></mask>
             <g mask="url(#b)">
                 <path
                     :class="`hills-background ${easeInBackground ? `easein` : `easeout`}`"

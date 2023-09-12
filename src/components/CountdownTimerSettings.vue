@@ -3,18 +3,18 @@
         <div :class="`settings-toggle-btn ${openSettings ? `active` : ``}`">
             <SettingsIcon v-if="!openSettings" />
             <CloseIcon v-else />
-            <div class="settings-label" v-if="!hideSettingsLabel">Settings</div>
+            <span class="settings-label" v-if="!hideSettingsLabel">Settings</span>
         </div>
     </button>
-    <button @click="toggleMode" :class="`light-mode-toggle ${toggleLightMode ? `light` : `dark`}`">
-        <div class="switch-icon">
+    <button @click="toggleMode" :class="`light-mode-toggle ${toggleLightMode ? `light` : `dark`}`" aria-label="Light Mode Toggle">
+        <span class="switch-icon">
             <FullMoonIcon />
             <SunIcon />
-        </div>
+        </span>
     </button>
     <div :class="`settings-container ${openSettings ? `active` : ``}`">
-        <div class="settings-container-form-group">
-            <div>
+        <div class="settings-container-form-group" role="toolbar">
+            <div class="input-row">
                 <label for="date" class="label">Countdown Timer Target Date:</label>
                 <input id="date" type="date" class="settings-date-picker" v-model="countdownTimerTargetDate" />
             </div>

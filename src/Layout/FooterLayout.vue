@@ -7,17 +7,28 @@
                         :class="`footer-social-icon ${lightMode ? `light` : `dark`}`"
                         href="https://www.facebook.com/blake.elliott.lyons/"
                         target="_blank"
+                        aria-label="Facebook"
                     >
                         <SocialIcons icon="facebook" :lightMode="props.lightMode" />
                     </a>
                 </li>
                 <li>
-                    <a :class="`footer-social-icon ${lightMode ? `light` : `dark`}`" href="https://www.pinterest.com/manofsteelfan/" target="_blank">
+                    <a
+                        :class="`footer-social-icon ${lightMode ? `light` : `dark`}`"
+                        href="https://www.pinterest.com/manofsteelfan/"
+                        target="_blank"
+                        aria-label="Pinterest"
+                    >
                         <SocialIcons icon="pinterest" :lightMode="props.lightMode" />
                     </a>
                 </li>
                 <li>
-                    <a :class="`footer-social-icon ${lightMode ? `light` : `dark`}`" href="https://www.instagram.com/blake_lyons/" target="_blank">
+                    <a
+                        :class="`footer-social-icon ${lightMode ? `light` : `dark`}`"
+                        href="https://www.instagram.com/blake_lyons/"
+                        target="_blank"
+                        aria-label="Instagram"
+                    >
                         <SocialIcons icon="instagram" :lightMode="props.lightMode" />
                     </a>
                 </li>
