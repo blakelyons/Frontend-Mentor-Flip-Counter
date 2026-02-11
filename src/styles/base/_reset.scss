@@ -1,0 +1,33 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    font-weight: normal;
+}
+
+html {
+    font-size: var(--base-font-size);
+}
+
+body {
+    min-height: 100vh;
+    color: var(--clr-white);
+    font-family: var(--primary-font-family);
+    font-size: 1.4rem;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+    // Prevent transitions on initial load to avoid flickering
+    transition: none !important;
+
+    @media screen and (min-height: 1100px) {
+        overflow: hidden;
+    }
+
+    // Enable transitions after page loads
+    &.loaded {
+        transition: unset;
+    }
+}

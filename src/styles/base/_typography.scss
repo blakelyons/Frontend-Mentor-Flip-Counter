@@ -1,0 +1,32 @@
+@import url("https://fonts.googleapis.com/css2?family=Red+Hat+Text:wght@600;700&display=swap");
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--primary-font-family);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5em;
+}
+
+h1 {
+    font-size: 1.25rem;
+
+    @media screen and (min-width: 40em) {
+        font-size: 2em;
+    }
+}
+
+h2 {
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+@media screen and (min-width: 60em) {
+    h2 {
+        font-size: 1.4rem;
+    }
+}

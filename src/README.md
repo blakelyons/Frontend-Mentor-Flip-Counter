@@ -4,17 +4,17 @@ This is a solution to the [Launch countdown timer challenge on Frontend Mentor](
 
 ## Table of contents
 
--   [Overview](#overview)
-    -   [The challenge](#the-challenge)
-    -   [Screenshot](#screenshot)
-    -   [Links](#links)
--   [My process](#my-process)
-    -   [Built with](#built-with)
-    -   [What I learned](#what-i-learned)
-    -   [Continued development](#continued-development)
-    -   [Useful resources](#useful-resources)
--   [Author](#author)
--   [Acknowledgments](#acknowledgments)
+- [Overview](#overview)
+    - [The challenge](#the-challenge)
+    - [Screenshot](#screenshot)
+    - [Links](#links)
+- [My process](#my-process)
+    - [Built with](#built-with)
+    - [What I learned](#what-i-learned)
+    - [Continued development](#continued-development)
+    - [Useful resources](#useful-resources)
+- [Author](#author)
+- [Acknowledgments](#acknowledgments)
 
 **Note: Delete this note and update the table of contents based on what sections you keep.**
 
@@ -24,9 +24,9 @@ This is a solution to the [Launch countdown timer challenge on Frontend Mentor](
 
 Users should be able to:
 
--   See hover states for all interactive elements on the page
--   See a live countdown timer that ticks down every second (start the count at 14 days)
--   **Bonus**: When a number changes, make the card flip from the middle
+- See hover states for all interactive elements on the page
+- See a live countdown timer that ticks down every second (start the count at 14 days)
+- **Bonus**: When a number changes, make the card flip from the middle
 
 ### Screenshot
 
@@ -34,21 +34,21 @@ Users should be able to:
 
 ### Links
 
--   Solution URL: [Add solution URL here](https://your-solution-url.com)
--   Live Site URL: [https://d5617416.frontend-mentor-countdown-timer.pages.dev/](https://d5617416.frontend-mentor-countdown-timer.pages.dev/)
+- Solution URL: [Add solution URL here](https://your-solution-url.com)
+- Live Site URL: [https://d5617416.frontend-mentor-countdown-timer.pages.dev/](https://d5617416.frontend-mentor-countdown-timer.pages.dev/)
 
 ## My process
 
 ### Built with
 
--   Semantic HTML5 markup
--   CSS custom properties
--   Flexbox
--   CSS Grid
--   Mobile-first workflow
--   [Vue](https://vuejs.org/guide/introduction.html) - JS library
--   [icomoon.io](https://icomoon.io/) - Custom Icon Fonts
--   [https://pqina.nl/tick/#flip](https://pqina.nl/tick/#flip) - Tick Flip Library
+- Semantic HTML5 markup
+- CSS custom properties
+- Flexbox
+- CSS Grid
+- Mobile-first workflow
+- [Vue](https://vuejs.org/guide/introduction.html) - JS library
+- [icomoon.io](https://icomoon.io/) - Custom Icon Fonts
+- [https://pqina.nl/tick/#flip](https://pqina.nl/tick/#flip) - Tick Flip Library
 
 ### What I learned
 
@@ -60,14 +60,14 @@ I want to continue to learn how to create Vue applications that utilize transiti
 
 ### Useful resources
 
--   [Tick Flip](https://pqina.nl/tick/#flip) - This helped me because I was able to quickly deploy a high-fidelity looking countdown timer with minimal work. This library was easily deployable and easily customizable.
--   [Kevin Powell](https://www.youtube.com/@KevinPowell) - While I have been doing web devlopment for several years, watching Kevin Powell's YouTube channel has helped keep my CSS knowledge up to date.
+- [Tick Flip](https://pqina.nl/tick/#flip) - This helped me because I was able to quickly deploy a high-fidelity looking countdown timer with minimal work. This library was easily deployable and easily customizable.
+- [Kevin Powell](https://www.youtube.com/@KevinPowell) - While I have been doing web devlopment for several years, watching Kevin Powell's YouTube channel has helped keep my CSS knowledge up to date.
 
 ## Author
 
--   Website - [blakelyons.com](https://blakelyons.com)
--   Frontend Mentor - [@blakelyons](https://www.frontendmentor.io/profile/blakelyons)
--   Twitter - [@blakelyons](https://www.twitter.com/blakelyons)
+- Website - [blakelyons.com](https://blakelyons.com)
+- Frontend Mentor - [@blakelyons](https://www.frontendmentor.io/profile/blakelyons)
+- Twitter - [@blakelyons](https://www.twitter.com/blakelyons)
 
 ## Acknowledgments
 

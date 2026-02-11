@@ -16,9 +16,9 @@ provide tools -- for example:
 
 have a "control panel"
 
--   ability to change the 4/5 colors on the fly
--   ability to change the date (maybe time?)
--   abilith to "speed things up" - i.e - simulate a "fast forward" time / countdownf
+- ability to change the 4/5 colors on the fly
+- ability to change the date (maybe time?)
+- abilith to "speed things up" - i.e - simulate a "fast forward" time / countdownf
 
 --
 

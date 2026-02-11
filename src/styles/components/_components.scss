@@ -1,61 +1,332 @@
-@use "./base.scss";
-@use "./mixins.scss" as *;
+@use "../mixins/mixins" as *;
 
-:root {
-    /* ----- Primary Colors ----- */
-    --clr-white: hsl(0, 0%, 100%);
-    --clr-gray-blue: hsl(237, 18%, 59%);
-    --clr-gray-blue-hover: hsl(237, 18%, 80%);
-    --clr-soft-red: hsl(345, 95%, 68%);
+// Header styles
+header {
+    padding: 0 3rem;
+    line-height: 1.5;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+    max-width: 1440px;
+    box-sizing: border-box;
+    padding: 0 1rem;
+    margin-top: 1rem;
 
-    /* ----- Neutral Colors ----- */
-    --clr-desaturated-blue: hsl(236, 21%, 26%);
-    --clr-dark-blue: hsl(235, 15%, 14%);
-    --clr-darker-blue: hsl(235, 18%, 12%);
-    --clr-darker-blue-hover: hsl(235, 18%, 80%);
+    @media screen and (max-width: 40em) {
+        align-items: flex-end;
+    }
 
-    /* ----- Flip Countdown Timer Settings ----- */
-    --clr-main-background-color: linear-gradient(0deg, hsl(236, 21%, 26%) 0%, hsl(235, 15%, 14%) 40%);
+    @media screen and (min-width: 60em) {
+        align-items: center;
+    }
 
-    --number-top-background: var(--clr-desaturated-blue);
-    --number-bottom-background: var(--clr-gray-blue);
-    --global-border-radius: 0.6rem;
-    --number-color: var(--clr-soft-red);
-    --label-color: var(--clr-gray-blue);
+    @media screen and (min-height: 1100px) {
+        overflow: hidden;
+    }
 
-    --animation-time: 1000ms;
-    --animation-ease: linear;
-    --perspective: calc(var(--number-height) * 2);
+    h1 {
+        margin: 2rem -0.5em auto 0;
+        // Prevent flickering - start with initial state, enable transitions after load
+        opacity: 0;
+        filter: blur(10px);
+
+        body.loaded & {
+            @include transition(1s, 1100ms);
+        }
+
+        &.loaded,
+        &.easein {
+            opacity: 1;
+        }
+
+        &.focus {
+            filter: blur(0);
+        }
+
+        &.easeout {
+            opacity: 0;
+        }
+    }
 }
 
-body.light-mode {
-    /* ----- Primary Colors ----- */
-    --clr-white: hsl(0, 0%, 100%);
-    --clr-gray-blue: #333333;
-    --clr-soft-red: hsl(206, 95%, 68%);
-
-    /* ----- Neutral Colors ----- */
-    --clr-desaturated-blue: hsl(217, 97%, 70%);
-    --clr-dark-blue: hsl(195, 100%, 75%);
-    --clr-darker-blue: hsl(217, 97%, 10%);
-
-    /* ----- Flip Countdown Timer Settings ----- */
-
-    --number-top-background: hsl(217, 97%, 70%);
-    --number-bottom-background: var(--clr-gray-blue);
-    --global-border-radius: 0.6rem;
-    --number-color: var(--clr-darker-blue);
-    --label-color: var(--clr-darker-blue);
+.logo {
+    display: block;
+    margin: 0 auto 2rem;
 }
 
+@media (min-width: 1024px) {
+    header {
+        display: flex;
+        place-items: center;
+        padding-right: calc(var(--section-gap) / 2);
+    }
+
+    .logo {
+        margin: 0 2rem 0 0;
+    }
+
+    header .wrapper {
+        display: flex;
+        place-items: flex-start;
+        flex-wrap: wrap;
+    }
+}
+
+main.countdown-timer-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+    max-width: 1440px;
+    box-sizing: border-box;
+    padding: 0 1rem;
+    margin-top: 1rem;
+
+    @media screen and (min-height: 1100px) {
+        overflow: hidden;
+    }
+
+    &.overflow-auto {
+        overflow: auto;
+    }
+
+    @media screen and (min-width: 60em) {
+        align-items: center;
+    }
+}
+
+// Footer styles
+footer {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-end;
+    align-items: center;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    margin-bottom: -1rem;
+
+    > * {
+        position: relative;
+        z-index: 1;
+    }
+
+    .footer-bg {
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: center;
+        align-items: flex-end;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        content: "";
+        z-index: 0;
+        overflow-x: hidden;
+        margin-bottom: -1rem;
+
+        &-left,
+        &-right {
+            svg {
+                transform: scaleX(-1);
+            }
+        }
+
+        &-center {
+            margin: 0 -1px 0 -1px;
+        }
+
+        .footer-hills {
+            .hills-background,
+            .hills-shadow,
+            .hills-foreground {
+                &.easein,
+                &.easeout,
+                &.easein svg > path,
+                &.easeout svg > path {
+                    @include transition-ease-in;
+                }
+
+                &.easein {
+                    transform: translateY(0);
+                }
+
+                &.easeout {
+                    transform: translateY(105%);
+                }
+            }
+        }
+    }
+
+    .menu-social,
+    .attribution {
+        transform: translateY(200%);
+    }
+
+    .footer,
+    .attribution {
+        @include transition-ease-in;
+
+        a {
+            @include transition;
+            &:hover {
+                color: var(--clr-white);
+            }
+        }
+    }
+
+    .menu-social {
+        transition-delay: 350ms;
+        &.animate-in {
+            transform: translateY(0);
+        }
+
+        a {
+            font-size: 1.72rem;
+            text-decoration: none;
+            color: var(--clr-gray-blue-hover);
+
+            span:before {
+                @include transition-ease-in;
+            }
+
+            &.dark:hover span:before {
+                color: var(--clr-gray-blue-hover);
+            }
+
+            &.light {
+                span:before {
+                    color: var(--clr-darker-blue);
+                }
+            }
+
+            &.light:hover span:before {
+                color: var(--clr-darker-blue-hover);
+            }
+        }
+    }
+
+    .attribution {
+        &.animate-in {
+            transform: translateY(-2rem);
+        }
+    }
+
+    .menu {
+        transform: translateY(-2rem);
+    }
+
+    .attribution {
+        font-size: 11px;
+        text-align: center;
+        position: relative;
+    }
+
+    .attribution a {
+        color: var(--clr-gray-blue);
+    }
+}
+
+// Light mode toggle
 .light-mode-toggle {
     display: inline-block;
     position: absolute;
     z-index: 9;
     top: 1rem;
     right: 1rem;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    background: var(--clr-white);
+    cursor: pointer;
+    --toggle-height: 28px;
+    --toggle-width: 54px;
+    --toggle-border-radius: 20px;
+    z-index: 10;
+
+    width: var(--toggle-width);
+    height: var(--toggle-height);
+    border-radius: var(--toggle-border-radius);
+
+    @media screen and (max-width: 40em) {
+        width: calc(var(--toggle-width) / 1.4);
+        height: calc(var(--toggle-height) / 1.4);
+        border-radius: calc(var(--toggle-border-radius) / 1.4);
+    }
+
+    padding: 2px;
+    border: 2px solid #c8c8c8;
+    background: hsl(236, 21%, 26%);
+
+    &.light {
+        background: hsl(217, 97%, 70%);
+        border-color: hsl(217, 97%, 60%);
+        .switch-icon {
+            transform: translateX(2em);
+
+            @media screen and (max-width: 40em) {
+                transform: translateX(1.4em);
+            }
+
+            .moon-icon {
+                opacity: 0;
+                visibility: hidden;
+            }
+
+            .sun-icon {
+                opacity: 1;
+                visibility: visible;
+            }
+        }
+    }
+
+    .switch-icon {
+        position: relative;
+        --icon-size: 20px;
+        width: var(--icon-size);
+        height: var(--icon-size);
+        @include transition-switch;
+
+        @media screen and (max-width: 40em) {
+            width: calc(var(--icon-size) / 1.4);
+            height: calc(var(--icon-size) / 1.4);
+        }
+
+        svg {
+            width: 100%;
+        }
+
+        .moon-icon,
+        .sun-icon {
+            @include transition-switch;
+            position: absolute;
+        }
+
+        .moon-icon {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .sun-icon {
+            visibility: hidden;
+            opacity: 0;
+        }
+    }
 }
 
+.light-mode-toggle[data-mode="light"] {
+    .switch-icon {
+        transform: translateX(100%);
+    }
+}
+
+// Sun and Moon rise animations
 .sunrise {
     display: inline-block;
     position: absolute;
@@ -109,7 +380,7 @@ body.light-mode {
     @include transition(1s, 0ms);
     scale: 0%;
     opacity: 0;
-    background-image: url(./moon-with-glow.png);
+    background-image: url("../../assets/images/moon-with-glow.png");
     background-size: 420px 420px;
     background-repeat: no-repeat;
     background-position: center;
@@ -144,13 +415,18 @@ body.light-mode {
     }
 }
 
+// Flip timer styles
 .flip-timer {
     width: 100%;
     max-width: 50em;
-    @include transition-ease-in;
+    // Prevent flickering - start hidden, enable transitions after load
     transform: translateY(50vh);
-    transition-delay: 250ms;
     opacity: 0;
+
+    body.loaded & {
+        @include transition-ease-in;
+        transition-delay: 250ms;
+    }
 
     &.loaded {
         opacity: 1;
@@ -196,7 +472,7 @@ body.light-mode {
 
     .tick {
         white-space: nowrap;
-        
+
         // Hide any branding added by the library
         &::after {
             display: none !important;
@@ -273,6 +549,56 @@ body.light-mode {
     }
 }
 
+.tick-flip {
+    max-width: 4.29rem !important;
+    @media screen and (min-width: 60em) {
+        width: 10.72rem !important;
+    }
+}
+
+.flip-timer .tick-flip > .tick-flip-card {
+    border-bottom: 2px solid var(--clr-darker-blue);
+    overflow: hidden;
+
+    &:before,
+    &:after {
+        display: block;
+        width: 0.5rem;
+        height: 0.5rem;
+        border-radius: 50%;
+        background-color: var(--clr-darker-blue);
+        content: "";
+        z-index: 100;
+        position: absolute;
+        top: calc(50% - 0.25rem);
+
+        @media screen and (min-width: 60em) {
+            top: calc(50% - 0.5rem);
+            width: 1rem;
+            height: 1rem;
+        }
+    }
+
+    &:before {
+        left: 0;
+        transform: translateX(-0.25rem);
+
+        @media screen and (min-width: 60em) {
+            transform: translateX(-0.5rem);
+        }
+    }
+
+    &:after {
+        right: 0;
+        transform: translateX(0.25rem);
+
+        @media screen and (min-width: 60em) {
+            transform: translateX(0.5rem);
+        }
+    }
+}
+
+// Settings styles
 .settings-toggle-btn,
 .settings-toggle-btn .settings-toggle-btn-label {
     transition: all 0.3s ease-in-out;
@@ -394,6 +720,7 @@ body.light-mode {
     }
 }
 
+// Form inputs
 input[type="date"],
 input[type="time"],
 input[type="text"] {
@@ -419,6 +746,7 @@ input[type="text"] {
     }
 }
 
+// Buttons
 .button {
     display: inline-block;
     flex-flow: row nowrap;
@@ -452,139 +780,20 @@ input[type="text"] {
     filter: invert(1);
 }
 
-.light-mode-toggle {
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: flex-start;
-    align-items: center;
-    background: var(--clr-white);
-    cursor: pointer;
-    --toggle-height: 28px;
-    --toggle-width: 54px;
-    --toggle-border-radius: 20px;
-    z-index: 10;
-
-    width: var(--toggle-width);
-    height: var(--toggle-height);
-    border-radius: var(--toggle-border-radius);
-
-    @media screen and (max-width: 40em) {
-        width: calc(var(--toggle-width) / 1.4);
-        height: calc(var(--toggle-height) / 1.4);
-        border-radius: calc(var(--toggle-border-radius) / 1.4);
-    }
-
-    padding: 2px;
-    border: 2px solid #c8c8c8;
-    background: hsl(236, 21%, 26%);
-
-    &.light {
-        background: hsl(217, 97%, 70%);
-        border-color: hsl(217, 97%, 60%);
-        .switch-icon {
-            transform: translateX(2em);
-
-            @media screen and (max-width: 40em) {
-                transform: translateX(1.4em);
-            }
-
-            .moon-icon {
-                opacity: 0;
-                visibility: hidden;
-            }
-
-            .sun-icon {
-                opacity: 1;
-                visibility: visible;
-            }
-        }
-    }
-
-    .switch-icon {
-        position: relative;
-        --icon-size: 20px;
-        width: var(--icon-size);
-        height: var(--icon-size);
-        @include transition-switch;
-
-        @media screen and (max-width: 40em) {
-            width: calc(var(--icon-size) / 1.4);
-            height: calc(var(--icon-size) / 1.4);
-        }
-
-        svg {
-            width: 100%;
-        }
-
-        .moon-icon,
-        .sun-icon {
-            @include transition-switch;
-            position: absolute;
-        }
-
-        .moon-icon {
-            visibility: visible;
-            opacity: 1;
-        }
-
-        .sun-icon {
-            visibility: hidden;
-            opacity: 0;
-        }
-    }
+// SVG transitions
+svg > path {
+    @include transition;
 }
 
-.light-mode-toggle[data-mode="light"] {
-    .switch-icon {
-        transform: translateX(100%);
-    }
-}
-
-.tick-flip {
-    max-width: 4.29rem !important;
-    @media screen and (min-width: 60em) {
-        width: 10.72rem !important;
-    }
-}
-
-.flip-timer .tick-flip > .tick-flip-card {
-    border-bottom: 2px solid var(--clr-darker-blue);
-    overflow: hidden;
-
-    &:before,
-    &:after {
-        display: block;
-        width: 0.5rem;
-        height: 0.5rem;
-        border-radius: 50%;
-        background-color: var(--clr-darker-blue);
-        content: "";
-        z-index: 100;
-        position: absolute;
-        top: calc(50% - 0.25rem);
-
-        @media screen and (min-width: 60em) {
-            top: calc(50% - 0.5rem);
-            width: 1rem;
-            height: 1rem;
-        }
-    }
-
-    &:before {
-        left: 0;
-        transform: translateX(-0.25rem);
-
-        @media screen and (min-width: 60em) {
-            transform: translateX(-0.5rem);
-        }
-    }
-
-    &:after {
-        right: 0;
-        transform: translateX(0.25rem);
-
-        @media screen and (min-width: 60em) {
-            transform: translateX(0.5rem);
+// Menu styles
+.menu {
+    margin: 2rem 0;
+    padding: 0;
+    list-style-type: none;
+    &--horizontal {
+        li {
+            display: inline-block;
+            margin: 0 1rem;
         }
     }
 }

@@ -1,20 +1,51 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, minimum-scale=1, viewport-fit=cover"
+        />
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, viewport-fit=cover">
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="./src/assets/favicon-32x32.png"
+        />
 
-  <link rel="icon" type="image/png" sizes="32x32" href="./src/assets/favicon-32x32.png">
+        <title>Frontend Mentor: Blake Lyons | Launch countdown timer</title>
 
-  <title>Frontend Mentor: Blake Lyons | Launch countdown timer</title>
+        <link
+            rel="stylesheet"
+            href="./custom-font/styles.css"
+        />
 
-  <link rel="stylesheet" href="./custom-font/styles.css">
-</head>
+        <!-- Critical CSS to prevent FOUC -->
+        <style>
+            body {
+                margin: 0;
+                padding: 0;
+                background: hsl(235, 18%, 12%);
+                background: linear-gradient(
+                    0deg,
+                    hsl(236, 21%, 26%) 0%,
+                    hsl(235, 15%, 14%) 40%
+                );
+                min-height: 100vh;
+                overflow-x: hidden;
+            }
+            #flip-counter-app {
+                min-height: 100vh;
+            }
+        </style>
+    </head>
 
-<body>
-  <div id="flip-counter-app"></div>
-  <script type="module" src="/src/main.js"></script>
-</body>
-
+    <body>
+        <div id="flip-counter-app"></div>
+        <script
+            type="module"
+            src="/src/main.js"
+        ></script>
+    </body>
 </html>

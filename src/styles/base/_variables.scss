@@ -1,0 +1,53 @@
+:root {
+    /* ----- Primary Colors ----- */
+    --clr-white: hsl(0, 0%, 100%);
+    --clr-gray-blue: hsl(237, 18%, 59%);
+    --clr-gray-blue-hover: hsl(237, 18%, 80%);
+    --clr-soft-red: hsl(345, 95%, 68%);
+
+    /* ----- Neutral Colors ----- */
+    --clr-desaturated-blue: hsl(236, 21%, 26%);
+    --clr-dark-blue: hsl(235, 15%, 14%);
+    --clr-darker-blue: hsl(235, 18%, 12%);
+    --clr-darker-blue-hover: hsl(235, 18%, 80%);
+
+    /* ----- Flip Countdown Timer Settings ----- */
+    --clr-main-background-color: linear-gradient(
+        0deg,
+        hsl(236, 21%, 26%) 0%,
+        hsl(235, 15%, 14%) 40%
+    );
+
+    --number-top-background: var(--clr-desaturated-blue);
+    --number-bottom-background: var(--clr-gray-blue);
+    --global-border-radius: 0.6rem;
+    --number-color: var(--clr-soft-red);
+    --label-color: var(--clr-gray-blue);
+
+    --animation-time: 1000ms;
+    --animation-ease: linear;
+    --perspective: calc(var(--number-height) * 2);
+
+    // Base font settings
+    --base-font-size: 14px;
+    --primary-font-family: "Red Hat Text", sans-serif;
+}
+
+body.light-mode {
+    /* ----- Primary Colors ----- */
+    --clr-white: hsl(0, 0%, 100%);
+    --clr-gray-blue: #333333;
+    --clr-soft-red: hsl(206, 95%, 68%);
+
+    /* ----- Neutral Colors ----- */
+    --clr-desaturated-blue: hsl(217, 97%, 70%);
+    --clr-dark-blue: hsl(195, 100%, 75%);
+    --clr-darker-blue: hsl(217, 97%, 10%);
+
+    /* ----- Flip Countdown Timer Settings ----- */
+    --number-top-background: hsl(217, 97%, 70%);
+    --number-bottom-background: var(--clr-gray-blue);
+    --global-border-radius: 0.6rem;
+    --number-color: var(--clr-darker-blue);
+    --label-color: var(--clr-darker-blue);
+}
