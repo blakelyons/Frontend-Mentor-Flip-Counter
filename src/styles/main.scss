@@ -14,7 +14,10 @@
 
 // Body background styles
 body {
-    // Apply transition only after page is loaded to prevent flickering
+    @media screen and (min-height: 40em) {
+        overflow: hidden;
+    }
+
     &.loaded {
         @include transition;
     }

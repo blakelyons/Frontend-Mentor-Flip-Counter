@@ -8,9 +8,27 @@ export function useTheme(easein, easeout, focus) {
     const showMoon = ref(false);
 
     const toggleMode = () => {
-        toggleLightMode.value
-            ? (toggleLightMode.value = false)
-            : ((toggleLightMode.value = true), (showMoon.value = false));
+        // Capture direction before changing refs so sun/moon hide first like the other
+        const goingToDark = toggleLightMode.value === true;
+        if (goingToDark) {
+            toggleLightMode.value = false;
+            showSun.value = false; // Sun animates away first, like moon when going to light
+            // Switch text/theme to dark immediately so color doesn’t change last
+            const body = document.querySelector("body");
+            if (body) {
+                lightMode.value = false;
+                body.classList.remove("light-mode");
+            }
+        } else {
+            toggleLightMode.value = true;
+            showMoon.value = false; // Moon animates away first
+            // Switch text/theme to light immediately so color changes first
+            const body = document.querySelector("body");
+            if (body) {
+                lightMode.value = true;
+                body.classList.add("light-mode");
+            }
+        }
 
         // Match original timing exactly - these happen immediately
         if (easein)
@@ -26,14 +44,17 @@ export function useTheme(easein, easeout, focus) {
 
             // Show moon at 50% through the large mountains (foreground) animation
             // Hills animation starts now (1000ms), foreground takes 700ms, so 50% = 350ms
-            showSun.value
-                ? ((showSun.value = false),
-                  setTimeout(() => {
-                      showMoon.value = true;
-                  }, 350))
-                : setTimeout(() => {
-                      ((showSun.value = true), (showMoon.value = false));
-                  }, 350);
+            if (goingToDark) {
+                // Sun already hidden at start; show moon partway through foreground
+                setTimeout(() => {
+                    showMoon.value = true;
+                }, 350);
+            } else {
+                setTimeout(() => {
+                    showSun.value = true;
+                    showMoon.value = false;
+                }, 50);
+            }
 
             setTimeout(() => {
                 if (focus) focus.value = true;
@@ -44,26 +65,28 @@ export function useTheme(easein, easeout, focus) {
             if (animated) {
                 animated.addEventListener("transitionend", () => {
                     console.log("Animation End");
-                    if (!lightMode.value) {
-                        lightMode.value = true;
-                        body.classList.add("light-mode");
-                    } else {
+                    // Set theme by direction so we don’t undo immediate dark text
+                    if (goingToDark) {
                         lightMode.value = false;
                         body.classList.remove("light-mode");
+                    } else {
+                        lightMode.value = true;
+                        body.classList.add("light-mode");
                     }
                 });
             }
 
             setTimeout(() => {
-                if (!lightMode.value) {
-                    lightMode.value = true;
-                    body.classList.add("light-mode");
-                } else {
+                // Set theme by direction (don’t toggle) so immediate dark stays correct
+                if (goingToDark) {
                     lightMode.value = false;
                     body.classList.remove("light-mode");
                     setTimeout(() => {
                         showStars.value = true;
                     }, 1200);
+                } else {
+                    lightMode.value = true;
+                    body.classList.add("light-mode");
                 }
             }, 1100);
         }, 1000);
