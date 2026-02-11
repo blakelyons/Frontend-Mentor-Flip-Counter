@@ -1,3 +1,3 @@
 <template>
-    <div class="moonrise"></div>
+  <div class="moonrise"></div>
 </template>

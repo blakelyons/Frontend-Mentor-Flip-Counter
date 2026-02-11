@@ -1,5 +1,5 @@
-@import "./base.scss";
-@import "./mixins.scss";
+@use "./base.scss";
+@use "./mixins.scss" as *;
 
 :root {
     /* ----- Primary Colors ----- */

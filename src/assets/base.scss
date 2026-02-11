@@ -1,5 +1,6 @@
+@use "./mixins.scss" as *;
+
 @import url("https://fonts.googleapis.com/css2?family=Red+Hat+Text:wght@600;700&display=swap");
-@import "./mixins.scss";
 
 :root {
     // --base-font-size: 62.5%;
