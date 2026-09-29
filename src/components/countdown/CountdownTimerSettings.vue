@@ -12,7 +12,7 @@
         </div>
     </button>
     <button
-        @click="toggleMode"
+        @click="toggleModeHandler"
         :class="`light-mode-toggle ${toggleLightMode ? `light` : `dark`}`"
         aria-label="Light Mode Toggle"
     >
@@ -99,7 +99,7 @@ const toggleSettings = () => {
     }
 };
 
-const toggleMode = () => {
+const toggleModeHandler = () => {
     toggleLightMode.value = !toggleLightMode.value;
     lightMode.value = !lightMode.value;
     emit("toggleLightMode");
